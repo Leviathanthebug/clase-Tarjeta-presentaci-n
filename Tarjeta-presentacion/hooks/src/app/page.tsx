@@ -1,33 +1,42 @@
 'use client';
 import Image from "next/image";
-import HookUseState from "./Components/HookUseState";
 import { use, useState } from "react";
 import ListaUsuarioComponents from "./Components/ListaUsuarioComponents";
-import FormularioComponent from "./Components/FormularioComponent";
 
 export default function Home() {
 
-  const [listaUsuario2, setListaUsuarios2] = useState<Array<ListaUsuario>>([
-    { id: 1, nombre: "Ana", email: "ana@example.com" }
+
+ const [listaUsuario2, setListaUsuarios2] = useState<Array<ListaUsuario>>([
+    { id: 1, nombre: "María García", email: "margar@example.com", ocupacion: "Desarrolladora Frontend"},
+    { id: 2, nombre: "Carlos Rodríguez", email: "carrrr@example.com", ocupacion: "Diseñador UX/UI" },
+    { id: 3, nombre: "Ana Martínez", email: "martinin@example.es", ocupacion: "Product Manager" },
+    { id: 4, nombre: "Luis Fernández", email: "fendin@example.com", ocupacion: "Ingeniero de Software"},
+    { id: 5, nombre: "Elena Sánchez", email: "cabezona@example.com", ocupacion: "Desarrolladora Backend" }
   ]);
+ 
 
 
-  console.log("Renderizando el componente Home");
+  
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h2>Trabajando con Hooks</h2>
-
-          <HookUseState />
-
-          <ListaUsuarioComponents id={listaUsuario2[0].id} nombre={listaUsuario2[0].nombre} email={listaUsuario2[0].email} />
-
-
-          <FormularioComponent />
-        </div>
-      </main>
-    </div>
+    <main style={{ backgroundColor: "#FFFDCE" }} className="main-container">
+      <div className="main-header">
+        <h1>Usuarios Registrados</h1>
+import HookUseState from "./Components/HookUseState";
+        <p>Listado de perfiles disponibles</p>
+      </div>
+      <div className="card-grid">
+          {
+            listaUsuario2.map((usuario) => (
+              <ListaUsuarioComponents
+                key={usuario.id}
+                id={usuario.id}
+                nombre={usuario.nombre}
+                email={usuario.email}
+                ocupacion={usuario.ocupacion}
+              />
+            ))
+          }
+      </div>
+    </main>
   );
 }

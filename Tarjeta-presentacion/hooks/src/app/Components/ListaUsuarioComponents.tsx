@@ -2,9 +2,16 @@ import React from 'react'
 
 export default function ListaUsuarioComponents(props: ListaUsuario) {
   return (
-    <div key={props.id}>
-      <h3>{props.nombre}</h3>
-      <p>{props.email}</p>
+      <div className="card">
+      <h2 className="card-name">{props.nombre}</h2>
+
+      <p className="card-info">
+        <span>Email:</span> {props.email}
+      </p>
+
+      <p className="card-info">
+        <span>Ocupación:</span> {props.ocupacion}
+      </p>
     </div>
   )
 }
