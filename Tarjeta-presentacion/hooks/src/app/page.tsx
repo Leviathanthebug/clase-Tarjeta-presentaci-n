@@ -1,29 +1,27 @@
 'use client';
-import Image from "next/image";
-import { use, useState } from "react";
+import { useState, useEffect } from "react";
 import ListaUsuarioComponents from "./Components/ListaUsuarioComponents";
 
 export default function Home() {
+  const [listaUsuario2, setListaUsuarios2] = useState<Array<ListaUsuario>>([]);
+  useEffect(() => {
+    const datosIniciales = [
+      { id: 1, nombre: "Juan Palomena", email: "juanPM@email.com", ocupacion: "Desarrollador" },
+      { id: 2, nombre: "Marjorie Garcia", email: "marjGa@email.com", ocupacion: "Diseñadora" },
+      { id: 3, nombre: "Pedro Picapiedra", email: "pedropp@email.com", ocupacion: "Analista" },
+      { id: 4, nombre: "Anais Watterson", email: "anaisWTTS@email.com", ocupacion: "Gerente" },
+      { id: 5, nombre: "Luis Mendoza", email: "luis@email.com", ocupacion: "Ingeniero" },
+    ];
+    
+    setListaUsuarios2(datosIniciales);
+  }, []);
 
-
- const [listaUsuario2, setListaUsuarios2] = useState<Array<ListaUsuario>>([
-    { id: 1, nombre: "María García", email: "margar@example.com", ocupacion: "Desarrolladora Frontend"},
-    { id: 2, nombre: "Carlos Rodríguez", email: "carrrr@example.com", ocupacion: "Diseñador UX/UI" },
-    { id: 3, nombre: "Ana Martínez", email: "martinin@example.es", ocupacion: "Product Manager" },
-    { id: 4, nombre: "Luis Fernández", email: "fendin@example.com", ocupacion: "Ingeniero de Software"},
-    { id: 5, nombre: "Elena Sánchez", email: "cabezona@example.com", ocupacion: "Desarrolladora Backend" }
-  ]);
- 
-
-
-  
-  return (
-    <main style={{ backgroundColor: "#FFFDCE" }} className="main-container">
-      <div className="main-header">
-        <h1>Usuarios Registrados</h1>
-import HookUseState from "./Components/HookUseState";
-        <p>Listado de perfiles disponibles</p>
-      </div>
+return (
+  <main style={{ backgroundColor: "#FFFDCE" }} className="main-container">
+    <div className="main-header">
+      <h1>Usuarios Registrados</h1>
+      <p>Listado de perfiles disponibles</p>
+    </div>
       <div className="card-grid">
           {
             listaUsuario2.map((usuario) => (
